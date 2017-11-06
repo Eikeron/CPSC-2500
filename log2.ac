@@ -1,0 +1,18 @@
+x: .fill 64
+two: .fill 2
+counter: .fill 0
+
+lli r1 &x
+lui r1 &x # r1 == user input
+lli r2 2
+lui r2 2 # r2 == const int 2
+lli r7 &counter
+lui r7 &counter # r7 == counter init 0
+
+LOOP: shf r1 r1 -1 # shift r1 LEFT 1
+addi r7 r7 1 #increment counter
+bgz r1 &LOOP
+
+out r7 # outputs counter
+
+.halt

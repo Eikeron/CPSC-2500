@@ -1,0 +1,7 @@
+lli r3 13
+lui r3 13
+lli r2 12
+lui r2 12
+add r4 r2 r3
+out r4
+.halt

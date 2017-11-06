@@ -1,0 +1,45 @@
+# int arr[2][3]
+# arr[0][1] vs. arr[1][0] ... etc
+# memory is one dimensional
+
+
+
+# variables
+# row major:
+#              row 0               |                row 1           
+# [0][0] | [0][1] | [0][2]     [1][0] | [1][1] | [1][2]
+# &arr[i][j] = arr + i (#col * sizeof(elem)) + (j * sizeof(elem))
+#                 = arr + (i * #col + j) * sizeof(elem)
+
+# column major:
+#         col 0         |         col 1         |         col 2       
+# [0][0] | [1][0]     [0][1] | [1][1]     [0][2] | [1][2]
+# &arr[i][j] = arr + (j * #rows + i) * sizeof(elem)
+
+
+# Structs
+# struct Foo {
+#                   int d;
+#                   int *b[2];
+#                   char c;
+# }
+
+#struct Foo foo;
+
+# data
+foo:     .fill 0 # a
+            .fill 0 # b[0]
+            .fill 0 # b[1]
+            .fill 0 # c
+
+# foo.c
+# print foo.c
+#load foo into r1   
+lli r1 &foo
+lui r1 &foo
+
+# load foo.c to r2
+lw r2 r1 3
+
+#print foo.c
+out r2

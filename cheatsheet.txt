@@ -1,0 +1,31 @@
+immediate == constant value in instruction
+
+ ir   Rd   10000 == cannot do, only 16 bits total for each command
+|4b| |3b| | >9b |
+lli Rd Imm8 load lower immediate = for under buffer instructions
+lui Rd Imm8 == load upper immediate = for over buffer instructions
+excecute lli before lui or you lose sign bits
+lui Rd 1500 = lui Rd 0xdc
+lli Rd 1500 = lli Rd 0x05
+lli does not get value from register, lui does
+
+in Rd == ask user for value
+
+LOOP: == standard loop, end with &LOOP
+add == +
+sub == -
+and == and
+or == or
+bgz == bigger than zero
+out == outputs number in register
+.halt == stops program = out r0
+
+shf == shift bits
+shf r3 r4 2 == R(r3) <- R(r4)v<< 2 == (shift left 2 bits)
+shf r7 r6 -3 == R(r7) -> R(r6) >> 3 == (shift right 3 bits)
+
+common instructions
+and r1 r2 r3 == r1 = r2 and r3
+or r2 r4 r3 == r2 = r4 or r3
+add r6 r2 r7 == r6 = r2 + r7
+sub r3 r3 r5 == r3 = r3 - r5

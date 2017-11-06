@@ -1,0 +1,28 @@
+# arrays
+# &arr[0] --> arr
+# &arr[i] --> arr + (i * sizeof(elem))
+
+# ANNA only:
+# 16-bits word addressable
+# all data types 16-bit --> sizeof(anything) == 1
+# &arr[i] --> arr + i
+
+# int list[5];   //global_variable
+
+# logic
+lli r1 &list
+lui r1 &list # r1 is &list
+lli r2 10
+lli r3 &x
+lui r3 &x
+lw r4 r3 0 # r4 is list index
+add r4 r4 r1 # r4 is &list[x]   // add list and index to get value
+sw r2 r4 0
+
+# data
+list:   .fill 0
+        .fill 0
+        .fill 0
+        .fill 0
+        .fill 0
+x:      .fill 3

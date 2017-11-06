@@ -1,0 +1,19 @@
+
+#lli r2 &p
+#lui r2 &p
+#lw r3 r2 0
+#addi r3 r3 0
+#lw r3 r2 0
+#sw r4 r3 0
+
+# *p = 3
+
+# get addr(p)
+lli r2 &p
+lui r2 &p
+# get value(p) == addr(var)
+lw r4 r2 0
+
+# store 3 at addr(var)
+lli r3 3 0
+sw r3 r4 0

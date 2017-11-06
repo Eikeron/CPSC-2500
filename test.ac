@@ -1,0 +1,10 @@
+lli r1 0 #stores the sum
+lli r2 0 #store the variable “i”
+lli r3 100 #the loop_max
+LOOP: add r1 r1 r2 #sum = sum + i
+addi r2 r2 1 #i = i + 1
+sub r4 r3 r2 #r4 = loop_max - i
+bgz r4 &LOOP #checking whether loop should end or continue
+out r2 #print the final value of “i”
+out r1 #print final value of sum
+.halt

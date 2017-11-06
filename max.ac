@@ -1,0 +1,26 @@
+#Scott Little
+#CPSC 2500
+#Winter 2017
+#Assignment 4
+
+#main body
+LOOP: 	in r2			# do... while (in r2 != -val)
+
+		addi r3 r2 -1	# subtract 1 less from number
+					# ie: 5 - (5-1) = 1, 
+		bgz r3 &INTOARRAY	# if 1 or 0, number is positive
+					# if -1, number is negative or 0
+INTOARRAY: 	sw r2 r7 0		# store &(r7) into &(r2)
+		lw r3 r2 0		# load &(r7) into &(r2)
+		sw r4 r3 0
+		lw r4 r3 0
+		sw r5 r4 0
+		bgz r6 &LOOP
+
+		out r3
+.halt
+
+#data section
+array: 	.fill 0
+	 	.fill 0
+	 	.fill 0
